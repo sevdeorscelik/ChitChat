@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
+import { useFirebase } from 'react-redux-firebase'
 import { Form, Segment, Button, Grid, Message } from "semantic-ui-react"
 import { Link } from "react-router-dom";
 import styles from "./login.module.css"
@@ -6,8 +7,10 @@ import { useForm } from "react-hook-form";
 
 
 const Login = () => {
-
+    const firebase = useFirebase()
     const { register, formState: { errors }, handleSubmit, setValue } = useForm()
+    const [fbErrors, setFbErrors] = useState([])
+    const [submitting, setSubmitting] = useState(false)
 
     useEffect(() => {
         register("email", { required: true, message: 'custom message'});
@@ -15,9 +18,27 @@ const Login = () => {
         
     }, [])
 
-    const onSubmit = (data, e) => {
-        console.log(data);
+    const onSubmit = ({email, password}, e) => {
+        setSubmitting(true)
+        setFbErrors([])
+
+        firebase.login( {
+            email, password
+        }) //bu bana fetch döndürür,(databaseden aliyoruz)
+        .then((data) => {
+            console.log(data);
+            setSubmitting(false)
+        })
+        .catch((error)=> {
+            setFbErrors([{message: error.message}])
+            setSubmitting(false)
+        })
+    
+
+
+        
     }
+
     return (
         <Grid textAlign="center" className={styles.container}>
             <Grid.Column style={{ maxWidth: 500, marginTop: "2rem" }}>
@@ -58,12 +79,25 @@ const Login = () => {
                         />
                         
                         
-                        <Button color="purple" fluid size="large">
+                        <Button color="purple" fluid size="large" disabled={submitting} >
                             Login
                         </Button>
                     </Segment>
 
                 </Form>
+                {
+                    fbErrors.length > 0 && (
+                        <Message error >
+                            {
+                                fbErrors.map((error, index) => {
+                                    return(
+                                        <p key={index}>{error.message}</p>
+                                    )
+                                })
+                            }
+                        </Message>
+                    )
+                }
                 <Message>
                     <span> Don't have an account? </span><Link to="/signup">Sign up</Link>
                 </Message>
