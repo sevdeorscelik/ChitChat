@@ -27,22 +27,23 @@ code {
 
 .navbar{
   height: 5rem;
-  position: fixed;
+  position: sticky;
   top: 0;
   background-color: #EBD8C3;
   width: 100vw;
+  z-index: 1;
 
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   text-align: center;
   
 }
 
 .navbar a {
-  color: #D885A3;
+  color: #694E4E;
   font-weight: bold;
   font-size: 2rem;
-  margin-left: 1rem;
-  padding: .5rem 2rem;
+  
+  padding: .5rem 1rem;
 }

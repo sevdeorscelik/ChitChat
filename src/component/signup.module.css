@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
 .container {
-   
+
     background: url('../images/bg-2.png');
     background-repeat: no-repeat;
     background-position: bottom;
     height: 95.4vh;
     background-color: #F7E9D7;
 
-
-
 }
 
-.container *{
+.container * {
     font-size: 1.5rem;
 }
 
@@ -25,7 +23,7 @@
     background: #C33764;
     background: -webkit-linear-gradient(to right, #1D2671, #C33764);
     background: linear-gradient(to right, #1D2671, #C33764);
-    
+
 /* To make linear gradient font color */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
