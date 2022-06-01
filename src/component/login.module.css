@@ -1,0 +1,10 @@
+.container {
+
+    background: url('../images/bg-2.png');
+    background-repeat: no-repeat;
+
+    background-position: bottom;
+    height: 101.2vh;
+    background-color: #F7E9D7;
+
+}
