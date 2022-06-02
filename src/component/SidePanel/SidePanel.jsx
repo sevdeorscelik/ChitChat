@@ -3,10 +3,14 @@ import CreateChannelForm from "../Channels/CreateChannelForm";
 import { Popup, Menu, Icon } from 'semantic-ui-react'
 import { useState } from 'react';
 import ChannelList from "../Channels/ChannelList";
+import UserPanel from "../UserPanel/UserPanel";
+import { TwitterPicker } from 'react-color'
+
 
 const SidePanel = () => {
 
     const [open, setOpen] = useState(false)
+    const [color, setColor] = useState("#7D1E6A");
 
     const handleOpen = () => {
         setOpen(true)
@@ -23,13 +27,21 @@ const SidePanel = () => {
                 vertical
                 inverted
                 secondary
-                color="blue"
                 fixed='left'
-                style={{ width: '346px', fontSize: '1.3rem' }}
+                style={{ background:color, width: '346px', fontSize: '1.3rem' }}
 
             >
                 <Menu.Item>
+                    <TwitterPicker 
+                    color={color}
+                    onChangeComplete={(color) => setColor(color.hex)}
+                    
+                    />
+                </Menu.Item>
+                <Menu.Item>
                     {/*userpanel */}
+                    <UserPanel />
+
                 </Menu.Item>
                 <Menu.Item>
                     <Menu.Header>
@@ -51,7 +63,7 @@ const SidePanel = () => {
             </Menu>
 
             {/*create channel form */}
-            <CreateChannelForm  open={open} onOpen={handleOpen} onClose={handleClose} />
+            <CreateChannelForm open={open} onOpen={handleOpen} onClose={handleClose} />
         </>
 
     )
