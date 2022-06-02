@@ -27,12 +27,14 @@ const ChatPanel = ({ currentChannel }) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [content, setContent] = useState('')
 
+
+    // oto scroll
     const messagesEndRef = useRef(null)
 
-    useEffect(()=>{
+    useEffect(() => {
         messagesEndRef.current.scrollIntoView({
             behaviour: 'smooth',
-            block:'end'
+            block: 'end'
         })
     })
 
@@ -57,7 +59,20 @@ const ChatPanel = ({ currentChannel }) => {
                 })
         }
     }
-
+    const filterMessages = () => {
+        const regex = new RegExp(searchTerm, 'gi')
+        const searchResults = [...channelMessages].reduce((acc, message) => {
+            if (
+                (message.value.content && message.value.content.match(regex)) ||
+                message.value.user.name.match(regex)
+              ) {
+                acc.push(message)
+            }
+            return acc
+        }, [])
+        return searchResults
+    }
+    const renderedMessages = searchTerm !== '' ? filterMessages() : channelMessages
 
     return (
         <>
@@ -98,7 +113,7 @@ const ChatPanel = ({ currentChannel }) => {
                     }}
                 >
                     {
-                        channelMessages && channelMessages.map(({ key, value }) => (
+                        renderedMessages && renderedMessages.map(({ key, value }) => (
                             <Messages key={key} message={value} />
                         ))
                     }
