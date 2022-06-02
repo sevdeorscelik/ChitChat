@@ -2,7 +2,7 @@
 
 .container {
    
-    background: url('/images/bg-2.png');
+    background: url('../../images/bg-2.png');
     background-repeat: no-repeat;
     background-position: bottom;
     height: 101.6vh;
