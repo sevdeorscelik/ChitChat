@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux";
 import { useFirebase } from 'react-redux-firebase'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Button } from 'semantic-ui-react'
 
 const UserPanel = () => {
 
@@ -18,10 +18,9 @@ const UserPanel = () => {
         {profile && profile.name}
       </p>
       <div>
-        <span style={{ paddingRight: 2 }}>Logout</span>
-        <Icon
-          name="sign out" onClick={() => signOut()}
-        />
+        
+        <Button icon='sign-out' content='Logout' onClick={() => signOut()} />
+        
 
       </div>
 

@@ -70,7 +70,7 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
             <Button color='black' onClick={() => onClose()}>
                 Cancel
             </Button>
-            <Button content='Create' icon='checkmark' positive onClick={() => handleSubmit(onSubmit)()} />
+            <Button content='Create' icon='checkmark' size='large' positive onClick={() => handleSubmit(onSubmit)()} />
                 
          
 

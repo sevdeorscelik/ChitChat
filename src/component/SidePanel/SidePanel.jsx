@@ -22,14 +22,12 @@ const SidePanel = () => {
 
     return (
         <>
-
             <Menu
                 vertical
                 inverted
                 secondary
                 fixed='left'
                 style={{ background:color, width: '346px', fontSize: '1.3rem' }}
-
             >
                 <Menu.Item>
                     <TwitterPicker 
