@@ -1,13 +1,20 @@
 import React from "react"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import { Menu } from 'semantic-ui-react'
+import { setCurrentChannel } from '../../store/action/channel'
 
 const ChannelList = () => {
 
     useFirebaseConnect([{ path: 'channels' }]) // artik react-state icerisinde kanal verileri var
+    const dispatch = useDispatch()
 
     const channels = useSelector(state => state.firebase.ordered.channels)
+    const currentChannel = useSelector(state => state.channels.currentChannel)
+
+    const setActiveChannel = (channel) => {
+        dispatch(setCurrentChannel(channel))
+    }
 
     if (!isLoaded(channels)) {
         return 'Loading channels..'
@@ -25,6 +32,10 @@ const ChannelList = () => {
                         name={value?.name}
                         as='a'
                         icon='hashtag'
+                        active={currentChannel && currentChannel.key === key}
+                        onClick={() => {
+                            setActiveChannel({key, ...value})
+                        }}
                     />
                 ))
             }
