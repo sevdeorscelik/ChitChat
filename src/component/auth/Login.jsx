@@ -32,11 +32,7 @@ const Login = () => {
         .catch((error)=> {
             setSubmitting(false)
             setFbErrors([{message: error.message}])
-        })
-    
-
-
-        
+        })        
     }
 
     return (
