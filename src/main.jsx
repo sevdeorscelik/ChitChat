@@ -15,8 +15,6 @@ import Login from './component/auth/Login'
 import PrivateRoute from './component/auth/PrivateRoute'
 
 
-
-
 const rrfConfig = {
     userProfile: 'users'
 }
@@ -27,8 +25,6 @@ const rrfProps = {
     config: rrfConfig,
     dispatch: store.dispatch
 }
-
-
 
 const Root = () => {
 

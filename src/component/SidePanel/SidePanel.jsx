@@ -26,14 +26,14 @@ const SidePanel = () => {
                 vertical
                 inverted
                 secondary
-                fixed='left'
-                style={{ background:color, width: '346px', fontSize: '1.3rem' }}
+                
+                style={{ background:color, width: '100%', height:'100%',fontSize: '1.3rem' }}
             >
                 <Menu.Item>
                     <TwitterPicker 
                     color={color}
                     onChangeComplete={(color) => setColor(color.hex)}
-                    
+                    width="90%"
                     />
                 </Menu.Item>
                 <Menu.Item>

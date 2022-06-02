@@ -13,14 +13,14 @@ function App() {
 
   return (
     <div className="App">
-      <Grid columns="2" style={{ background:'#eee', height:'110vh' }}>
-        <Grid.Column width="3" >
+      <Grid columns="2" style={{ background: '#eee', height: '110vh' }}>
+        <Grid.Column width="3"  >
 
           {/*sidebar*/}
           <SidePanel />
 
         </Grid.Column>
-        <Grid.Column width="13"  style={{ background:'#eee' }}>
+        <Grid.Column width="13" style={{ background: '#eee' }}>
 
           {/*chatpanel*/}
           {currentChannel && <ChatPanel currentChannel={currentChannel} />}

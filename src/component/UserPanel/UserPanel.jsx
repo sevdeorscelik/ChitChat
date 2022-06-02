@@ -18,10 +18,9 @@ const UserPanel = () => {
         {profile && profile.name}
       </p>
       <div>
-        
-        <Button icon='sign-out' content='Logout' onClick={() => signOut()} />
-        
 
+        <Button icon='sign-out' content='Logout' size="mini" onClick={() => signOut()} />
+        
       </div>
 
     </div>

@@ -7,6 +7,7 @@ import { FirebaseError } from "firebase/app";
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import Messages from './Messages'
 import { useEffect } from "react";
+import styles from './chatPanel.module.css'
 
 
 
@@ -78,11 +79,11 @@ const ChatPanel = ({ currentChannel }) => {
         <>
             {/*Messages header */}
 
-            <Segment clearing>
+            <Segment className={styles.headerSegment} > 
 
-                <Header as='h3' floted='left' >
+                <Header as='h3' className={styles.header1} >
 
-                    <span>
+                    <span className={styles.channelName}>
                         <Icon name='hashtag' />
                         {currentChannel?.name}
                     </span>
@@ -90,7 +91,7 @@ const ChatPanel = ({ currentChannel }) => {
                 </Header>
 
                 {/* search message */}
-                <Header as='h3' floated='right'>
+                <Header className={styles.header2} >
                     <Input
                         size="mini"
                         icon='search'
@@ -98,13 +99,14 @@ const ChatPanel = ({ currentChannel }) => {
                         placeholder='Search in messages...'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
+                       
                     />
                 </Header>
             </Segment>
 
 
             {/*Messages*/}
-            <Segment style={{ position: 'fixed', top: 55, bottom: 70, width: '80%' }}>
+            <Segment className={styles.messagesSegment} >
                 <Comment.Group
                     style={{
                         height: '80vh',
@@ -123,23 +125,19 @@ const ChatPanel = ({ currentChannel }) => {
 
             {/* sende new message*/}
             <Segment
-                style={{ position: 'fixed', bottom: 0, width: '85%', display: 'flex' }}
+                style={{ position: 'fixed', bottom: '0', width: '85%', display: 'flex' }}
             >
 
 
                 <Form onSubmit={handleSubmit} style={{ width: '88%' }} >
                     <Input fluid name='message' value={content} autoComplete='off' onChange={(e) => setContent(e.target.value)} placeholder={`# Send a message to channel ${currentChannel.name}`} />
                 </Form>
-                <Button icon labelPosition='right' >
+                <Button icon labelPosition='right' onClick={handleSubmit} >
                     Send
                     <Icon name='send' />
                 </Button>
 
             </Segment>
-
-
-
-
 
         </>
     )

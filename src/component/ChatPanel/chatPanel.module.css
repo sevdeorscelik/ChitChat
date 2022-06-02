@@ -1,0 +1,25 @@
+.headerSegment {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.channelName{
+    font-size: 1.7rem;
+    
+}
+
+.header1  {
+    align-self: flex-end;
+}
+
+
+.messagesSegment {
+    /*position: 'fixed', top: 55, bottom: 70, width: '80%'*/
+    
+    position: fixed;
+    top: 55;
+    bottom: 70;
+    width: 100%;
+}
