@@ -1,26 +1,36 @@
 import React from "react"
-import { Segment, Header, Icon, Comment, Form, Input, Button, StepContent } from 'semantic-ui-react'
+import { Segment, Header, Icon, Comment, Form, Input, Button, Message } from 'semantic-ui-react'
 import { useFirebase } from 'react-redux-firebase'
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { FirebaseError } from "firebase/app";
+import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import Messages from './Messages'
 
 
 
 const ChatPanel = ({ currentChannel }) => {
+    useFirebaseConnect([
+        {
+            path: `/messages/${currentChannel.key}`,
+            storeAs: 'channelMessages'
+        },
+    ])
 
     const firebase = useFirebase()
+
     const profile = useSelector(state => state.firebase.profile)
     const currentUserUid = useSelector(state => state.firebase.auth.uid)
+    const channelMessages = useSelector(state => state.firebase.ordered.channelMessages)
 
     const [searchTerm, setSearchTerm] = useState('')
     const [content, setContent] = useState('')
-    
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if(content !== ''){
+        if (content !== '') {
             const message = {
                 content,
                 timestamp: firebase.database.ServerValue.TIMESTAMP,
@@ -32,9 +42,9 @@ const ChatPanel = ({ currentChannel }) => {
             }
 
             firebase.push(`messages/${currentChannel.key}`, message) // promise geldi
-            .then(()=>{
-                setContent('') //clear
-            })
+                .then(() => {
+                    setContent('') //clear
+                })
         }
     }
 
@@ -77,6 +87,11 @@ const ChatPanel = ({ currentChannel }) => {
                         maxWidth: '100%'
                     }}
                 >
+                    {
+                        channelMessages && channelMessages.map(({key,value}) => (
+                            <Messages key={key} message={value} />
+                        ))
+                    }
 
                 </Comment.Group>
             </Segment>
@@ -90,7 +105,7 @@ const ChatPanel = ({ currentChannel }) => {
                 </Button>
 
                 <Form onSubmit={handleSubmit} style={{ flex: '1' }} >
-                    <Input fluid name='message' value={content} onChange={(e) => setContent(e.target.value)} labelPosition='left' placeholder={`# Send a message to channel ${currentChannel.name}`} />
+                    <Input fluid name='message' value={content} autoComplete='off' onChange={(e) => setContent(e.target.value)} labelPosition='left' placeholder={`# Send a message to channel ${currentChannel.name}`} />
                 </Form>
 
             </Segment>
