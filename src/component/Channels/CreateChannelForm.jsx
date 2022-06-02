@@ -41,7 +41,8 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
             <Modal.Content>
                 <Form onSubmit={handleSubmit(onSubmit)} >
                     <Form.Input
-                        fluidicon='hashtag'
+                        fluid
+                        icon='hashtag'
                         iconPosition="left"
                         name='name'
                         placeholder='#General'
@@ -51,7 +52,8 @@ const CreateChannelForm = ({ open, onOpen, onClose }) => {
                         error={errors.name ? true : false}
                     />
                     <Form.Input
-                        fluidicon='hashtag'
+                        fluid
+                        icon='pencil'
                         iconPosition="left"
                         name='description'
                         placeholder='#General This is the one channel that will always include everyone.'
