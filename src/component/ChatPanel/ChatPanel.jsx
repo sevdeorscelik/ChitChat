@@ -2,10 +2,11 @@ import React from "react"
 import { Segment, Header, Icon, Comment, Form, Input, Button, Message } from 'semantic-ui-react'
 import { useFirebase } from 'react-redux-firebase'
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FirebaseError } from "firebase/app";
 import { useFirebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import Messages from './Messages'
+import { useEffect } from "react";
 
 
 
@@ -25,6 +26,15 @@ const ChatPanel = ({ currentChannel }) => {
 
     const [searchTerm, setSearchTerm] = useState('')
     const [content, setContent] = useState('')
+
+    const messagesEndRef = useRef(null)
+
+    useEffect(()=>{
+        messagesEndRef.current.scrollIntoView({
+            behaviour: 'smooth',
+            block:'end'
+        })
+    })
 
 
     const handleSubmit = (e) => {
@@ -88,11 +98,11 @@ const ChatPanel = ({ currentChannel }) => {
                     }}
                 >
                     {
-                        channelMessages && channelMessages.map(({key,value}) => (
+                        channelMessages && channelMessages.map(({ key, value }) => (
                             <Messages key={key} message={value} />
                         ))
                     }
-
+                    <div ref={messagesEndRef} />
                 </Comment.Group>
             </Segment>
 
@@ -100,13 +110,15 @@ const ChatPanel = ({ currentChannel }) => {
             <Segment
                 style={{ position: 'fixed', bottom: 0, width: '85%', display: 'flex' }}
             >
-                <Button icon>
-                    <Icon name='add' />
-                </Button>
 
-                <Form onSubmit={handleSubmit} style={{ flex: '1' }} >
-                    <Input fluid name='message' value={content} autoComplete='off' onChange={(e) => setContent(e.target.value)} labelPosition='left' placeholder={`# Send a message to channel ${currentChannel.name}`} />
+
+                <Form onSubmit={handleSubmit} style={{ width: '88%' }} >
+                    <Input fluid name='message' value={content} autoComplete='off' onChange={(e) => setContent(e.target.value)} placeholder={`# Send a message to channel ${currentChannel.name}`} />
                 </Form>
+                <Button icon labelPosition='right' >
+                    Send
+                    <Icon name='send' />
+                </Button>
 
             </Segment>
 
