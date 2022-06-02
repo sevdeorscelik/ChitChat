@@ -1,3 +1,3 @@
 # ChitChat
 
-[demo](https://chit-chat-sigma.vercel.app/)
+[demo](https://chitchat-sevde.vercel.app/login)
