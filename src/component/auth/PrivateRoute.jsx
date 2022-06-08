@@ -6,7 +6,7 @@ import Fallback from '../Fallback'
 
 
 
-const PrivateRoute = ({ children, ...rest }) => { //üc nokta exact, path hepsini aliyor demek
+const PrivateRoute = ({ children, ...rest }) => { 
 
   const auth = useSelector(state => state.firebase.auth)
 
