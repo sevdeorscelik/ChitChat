@@ -19,6 +19,7 @@ const ChatPanel = ({ currentChannel }) => {
         },
     ])
 
+
     const firebase = useFirebase()
 
     const profile = useSelector(state => state.firebase.profile)
@@ -66,7 +67,7 @@ const ChatPanel = ({ currentChannel }) => {
             if (
                 (message.value.content && message.value.content.match(regex)) ||
                 message.value.user.name.match(regex)
-              ) {
+            ) {
                 acc.push(message)
             }
             return acc
@@ -79,7 +80,7 @@ const ChatPanel = ({ currentChannel }) => {
         <>
             {/*Messages header */}
 
-            <Segment className={styles.headerSegment} > 
+            <Segment className={styles.headerSegment} >
 
                 <Header as='h3' className={styles.header1} >
 
@@ -99,8 +100,9 @@ const ChatPanel = ({ currentChannel }) => {
                         placeholder='Search in messages...'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                       
+
                     />
+                    
                 </Header>
             </Segment>
 

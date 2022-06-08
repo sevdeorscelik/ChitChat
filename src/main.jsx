@@ -39,7 +39,7 @@ const Root = () => {
                 //es ist login
 
                 history.push('/');
-                // homa sayfasina yönlendirir
+                // app sayfasina yönlendirir
             } else {
                 //nicht login oder logout
                 history.push('/login');
@@ -75,11 +75,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 );
 
-
-/*
-            <nav className='navbar'>
-                <Link to='/'> App </Link>
-                <Link to='/signup'> Sign Up </Link>
-                <Link to='/login'> Login </Link>
-            </nav>
-            */
