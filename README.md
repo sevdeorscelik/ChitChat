@@ -36,13 +36,13 @@ So starten Sie die Website lokal:
 * Erstellen Sie ein Google Firebase-Konto und rufen Sie den Verbindungs-Firebase-URI ab
 * Stellen Sie Umgebungsvariablen in `.env` ein
 * Set `REACT_APP_API_KEY = <DEIN_ REACT_APP_API_KEY>`
-    * Set `REACT_APP_AUTH_DOMAIN = <DEIN_REACT_APP_AUTH_DOMAIN>`
-        * Set `REACT_APP_PROJECT_ID=<DEIN_REACT_APP_PROJECT_ID>`
-            * Set `REACT_APP_STORAGE_BUCKET=<DEIN_REACT_APP_STORAGE_BUCKET>`
-                * Set `REACT_APP_MESSAGING_SENDER_ID=<DEIN_REACT_APP_MESSAGING_SENDER_ID>`
-                    * Set `REACT_APP_APP_ID=<DEIN_REACT_APP_APP_ID>`
-                        * Set `REACT_APP_MEASUREMENT_ID=<DEIN_REACT_APP_MEASUREMENT_ID>`
-                            * `npm run start` to start the local server
+* Set `REACT_APP_AUTH_DOMAIN = <DEIN_REACT_APP_AUTH_DOMAIN>`
+* Set `REACT_APP_PROJECT_ID=<DEIN_REACT_APP_PROJECT_ID>`
+* Set `REACT_APP_STORAGE_BUCKET=<DEIN_REACT_APP_STORAGE_BUCKET>`
+* Set `REACT_APP_MESSAGING_SENDER_ID=<DEIN_REACT_APP_MESSAGING_SENDER_ID>`
+* Set `REACT_APP_APP_ID=<DEIN_REACT_APP_APP_ID>`
+* Set `REACT_APP_MEASUREMENT_ID=<DEIN_REACT_APP_MEASUREMENT_ID>`
+* `npm run start` to start the local server
                         
 ## Codeübersicht
 ### Abhängigkeiten
