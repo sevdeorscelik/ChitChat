@@ -15,9 +15,9 @@ const UserPanel = () => {
   return (
     <div style={{ padding: 2, display: 'flex', justifyContent: 'space-between' }}>
 
-        <p>
-          {profile && profile.name}
-        </p>
+      <p>
+        {profile && profile.name}
+      </p>
 
       <div>
         <Button icon='sign-out' content='Logout' size="mini" onClick={() => signOut()} />
