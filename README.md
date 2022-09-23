@@ -4,6 +4,10 @@
 
 [demo](https://chitchat-hla6nezno-sevdeorscelik.vercel.app)
 
+## Reference Image
+
+<img src="/src/images/chitchat-login.png" height="400" />
+
 ## Tools
 
 - Styling : Figma, Semantic-UI, CSS
